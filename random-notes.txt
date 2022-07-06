@@ -1,0 +1,6 @@
+js basics -- random notes
+
+"emmet" extension/abbreviation, magics a simple HTML file:
+vscode > type "!" then "tab"
+
+
