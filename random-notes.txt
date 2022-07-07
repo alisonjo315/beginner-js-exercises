@@ -1,10 +1,12 @@
-js basics -- random notes
+# js basics -- random notes
 
 "emmet" extension/abbreviation, magics a simple HTML file:
 vscode > type "!" then "tab"
 
 
-variable declarations:
+## variables basics
+
+### variable declarations
 var thing = 'alison';
 let age = 90;
 const cool = true;
@@ -16,6 +18,18 @@ const cool = true;
 
     const can't be changed -- the following line would throw an error:
     cool = false;
+
+    let and const are new to JS as of es6 (?!)
+
+    Wes very rarely uses var variables.
+        usually he uses const
+        uses let sometimes
+
+variable names must start with letters, underscores, dollar signs
+    can contain ^^ these characters, and numbers
+    *no hyphens*
+
+    TYPICALLY, you don't start variables with _ or $ because they're associated with (lowdash?) and jquery, respectively (you can, but it would be weird).
 
 strict mode: brief explanation is simply that it forces some best practices
     not worrying about it, b/c it's forced by modules and that's the modern way to do JS so, effectively, we'll be forced into strict mode anyway.
