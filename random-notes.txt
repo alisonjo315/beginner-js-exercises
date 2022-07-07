@@ -4,3 +4,21 @@ js basics -- random notes
 vscode > type "!" then "tab"
 
 
+variable declarations:
+var thing = 'alison';
+let age = 90;
+const cool = true;
+    var and let can be updated -- just don't use the (what I'm calling) prefix if you update it. For example, later in my script I could do:
+    var thing = 'alison jo';
+    I would not do:
+    var thing = 'alison jo';
+    (it might "work" but it's bad)
+
+    const can't be changed -- the following line would throw an error:
+    cool = false;
+
+strict mode: brief explanation is simply that it forces some best practices
+    not worrying about it, b/c it's forced by modules and that's the modern way to do JS so, effectively, we'll be forced into strict mode anyway.
+    In theory, enabling strict mode is putting this line at the top of your script:
+    'use strict';
+
