@@ -1,7 +1,13 @@
 # js basics -- random notes
 
+## IMPORTANT
+
+⚡ Remember you've got his (Wes) eslint config, so there's some stuff that'll happen automatically (and/or errors that may get thrown) that aren't native JS.
+
+## Anyway
+
 "emmet" extension/abbreviation, magics a simple HTML file:
-vscode > type "!" then "tab"
+vscode > type "html5" then "enter"
 
 
 ## variables basics
@@ -18,6 +24,9 @@ const cool = true;
 
     const can't be changed -- the following line would throw an error:
     cool = false;
+
+    when you set a const variable, you MUST set a value -- the following line would throw a syntax error "missing = in const declaration":
+    const something;
 
     let and const are new to JS as of es6 (?!)
 
@@ -46,3 +55,9 @@ strict mode: brief explanation is simply that it forces some best practices
     In theory, enabling strict mode is putting this line at the top of your script:
     'use strict';
 
+see types.js "eslint-disable" and "eslint-enable" code comments
+
+pro tip: use typeof in dev tools to inspect variables on the fly
+  i.e. open the CD Demo homepage > dev tools > Console, and do:
+  typeof global_slider_count
+  it'll output "number"
