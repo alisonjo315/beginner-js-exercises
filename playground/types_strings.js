@@ -1,6 +1,6 @@
-console.log('it works!');
-
 /* eslint-disable */
+
+console.log('it works!');
 
 // strings!
 const first = 'alison';
