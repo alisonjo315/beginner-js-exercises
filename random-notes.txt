@@ -9,7 +9,6 @@
 "emmet" extension/abbreviation, magics a simple HTML file:
 vscode > type "html:5" then "enter"
 
-
 ## variables basics
 
 ### variable declarations
@@ -54,10 +53,9 @@ pro tip: use typeof in dev tools to inspect variables on the fly
   typeof global_slider_count
   it'll output "number"
 
-strict mode: brief explanation is simply that it forces some best practices
-    not worrying about it, b/c it's forced by modules and that's the modern way to do JS so, effectively, we'll be forced into strict mode anyway.
-    In theory, enabling strict mode is putting this line at the top of your script:
-    'use strict';
+## functions
+
+"garbage collection" is the thing where variables that only exist inside a function get cleaned-up.
 
 ## misc eslint
 
@@ -68,3 +66,10 @@ See examples in...
 - types_*.js files "eslint-disable" at top to disable eslint entirely for each of these files
 - types_strings.js "eslint-enable" near the end (commented out, actually) (not sure if there's an "eslint-enable-next-line", haven't tried)
 - variables.html "eslint-disable prefer-const" example for "entire file" (so to speak)
+
+## misc
+
+strict mode: brief explanation is simply that it forces some best practices
+    not worrying about it, b/c it's forced by modules and that's the modern way to do JS so, effectively, we'll be forced into strict mode anyway.
+    In theory, enabling strict mode is putting this line at the top of your script:
+    'use strict';
