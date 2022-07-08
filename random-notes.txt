@@ -55,7 +55,31 @@ pro tip: use typeof in dev tools to inspect variables on the fly
 
 ## functions
 
+### garbage collection
 "garbage collection" is the thing where variables that only exist inside a function get cleaned-up.
+
+### function diagram image
+https://github.com/wesbos/beginner-javascript/blob/master/function-definition.jpg
+  (stuff I'm already familiar with, but still a really nice diagram)
+
+### reusing variables
+variables / variable names canNOT be reused in the same scope
+variables / variable names CAN be reused as parameters
+  ** BAD **
+  function myfunction() {
+    const something = 'hello';
+    const something = 'world';
+  }
+  ** FINE **
+  function myfunction1(something) {
+    return `Say ${something}`;
+  }
+  function myfunction2(something) {
+    return `I meant to tell you ${something}`;
+  }
+
+### misc
+
 
 ## misc eslint
 
@@ -73,3 +97,9 @@ strict mode: brief explanation is simply that it forces some best practices
     not worrying about it, b/c it's forced by modules and that's the modern way to do JS so, effectively, we'll be forced into strict mode anyway.
     In theory, enabling strict mode is putting this line at the top of your script:
     'use strict';
+
+you can pass multiple things to console.log, it'll just dump everything out:
+  console.log("thing 1", "thing 2");
+  outputs:
+    thing 1 thing 2
+
