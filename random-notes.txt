@@ -7,7 +7,7 @@
 ## Anyway
 
 "emmet" extension/abbreviation, magics a simple HTML file:
-vscode > type "html5" then "enter"
+vscode > type "html:5" then "enter"
 
 
 ## variables basics
