@@ -31,6 +31,16 @@ variable names must start with letters, underscores, dollar signs
 
     TYPICALLY, you don't start variables with _ or $ because they're associated with (lowdash?) and jquery, respectively (you can, but it would be weird).
 
+### data types
+
+SNOB'N'US
+    ha ha ha useless mnemonic
+anyway, mostly familiar to me BUT:
+    String, Number, Object, Boolean
+    Null
+    Undefined, Symbol
+
+
 strict mode: brief explanation is simply that it forces some best practices
     not worrying about it, b/c it's forced by modules and that's the modern way to do JS so, effectively, we'll be forced into strict mode anyway.
     In theory, enabling strict mode is putting this line at the top of your script:
