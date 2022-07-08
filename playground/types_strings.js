@@ -32,6 +32,7 @@ let welcome3 = 'hello my name is ';
 welcome3 = welcome3 + first;
 welcome3 = welcome3 + '. Nice to meet you';
 
+// backticks with "interpolation strings"
 const another_hello = `Now with fanciness! -- Hello my name is ${first}. Nice to meet you.`;
 const hello_with_math = `Hello my name is ${first}. Nice to meet you. I am ${1 + 95} years old.`;
 
