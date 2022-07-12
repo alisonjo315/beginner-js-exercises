@@ -80,6 +80,19 @@ variables / variable names CAN be reused as parameters
 
 ### misc
 
+Anonymous functions -- P.S. some ppl say "don't use anonymous functions, they give you bad errors" that's because the errors used to be really awful, i.e. if you have an error inside an anonymous function, it would just say "you have an error in an anonymous function" that's it, no line number, etc. Fortunately, the errors aren't so bad anymore.
+
+## debugging
+
+console.table(listOfObjects);
+^^ use this console method for getting a list of objects!
+
+console.group to group console log things together
+
+inspector: if you select a page element, then go to Console, you can use "$0" and it'll be the thing you inspected.  ($0 is the "last element you clicked")
+
+network: this tab in dev tools is about ...network requests! api calls and such.
+
 
 ## misc eslint
 
@@ -102,4 +115,13 @@ you can pass multiple things to console.log, it'll just dump everything out:
   console.log("thing 1", "thing 2");
   outputs:
     thing 1 thing 2
+
+"unreachable" notice/error happens, for example, when something is put after a "return" in a function. i.e.
+  function inchToCm(inches) {
+    const cm = inches * 2.54;
+    return cm;
+    const text = 'hello world';
+    return inches * 2.54;
+  }
+  ^^ everything after "return cm" is "unreachable"
 
