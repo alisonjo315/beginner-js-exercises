@@ -82,6 +82,12 @@ variables / variable names CAN be reused as parameters
 
 Anonymous functions -- P.S. some ppl say "don't use anonymous functions, they give you bad errors" that's because the errors used to be really awful, i.e. if you have an error inside an anonymous function, it would just say "you have an error in an anonymous function" that's it, no line number, etc. Fortunately, the errors aren't so bad anymore.
 
+### closures
+
+Honestly, weird, but! --
+Closures are the ability for a child/inner function to access variables from a higher level scope even after these functions have been called/"closed".
+  The example that clicked for me the best was the hockeyGame() thing in closures.html.
+
 ## debugging
 
 console.table(listOfObjects);
@@ -93,6 +99,9 @@ inspector: if you select a page element, then go to Console, you can use "$0" an
 
 network: this tab in dev tools is about ...network requests! api calls and such.
 
+## scope
+
+curly braces make a "block" -- it's not just functions, block scope exists even with just conditionals!
 
 ## misc eslint
 
