@@ -1,3 +1,5 @@
+/* eslint-disable no-self-compare */
+/* eslint-disable no-constant-condition */
 /* eslint-disable prefer-arrow-callback */
 /* eslint-disable prettier/prettier */
 /* eslint-disable spaced-comment */
