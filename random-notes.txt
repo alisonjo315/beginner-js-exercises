@@ -9,6 +9,16 @@
 "emmet" extension/abbreviation, magics a simple HTML file:
 vscode > type "html:5" then "enter"
 
+random image thing -- replace "200" with a width in pixels:
+https://picsum.photos/200
+
+## MDN documentation
+Example: https://developer.mozilla.org/en-US/docs/Web/API/Element
+Look down the left sidebar...
+* ⚠ items, stay away from (non-standard, will not work for all users)
+* 🗑 (delete icon) items, stay away from (deprecated)
+* ⚗️ (flask icon) items, experimental - consult browser compatibility table
+
 ## variables basics
 
 ### variable declarations
@@ -95,13 +105,48 @@ console.table(listOfObjects);
 
 console.group to group console log things together
 
+console.dir is pretty similar to console.log (so far with the examples I've tried, the output is the same in FF, slightly different in Chrome)
+
 inspector: if you select a page element, then go to Console, you can use "$0" and it'll be the thing you inspected.  ($0 is the "last element you clicked")
 
 network: this tab in dev tools is about ...network requests! api calls and such.
 
+from mini-workshop with Irina N:
+  sources > right sidebar > event listener breakpoints > "click" (tried out on cwd_events)
+
+  if there's ajax, you'll see "XHR/fetch Breakpoints" available
+
 ## scope
 
 curly braces make a "block" -- it's not just functions, block scope exists even with just conditionals!
+
+## DOM and stuff
+
+window - we know that
+document - we know that
+navigator: higher level than the window -- essentially, it's the device (browser/OS/etc.)
+
+### querySelector
+
+need to get stuff from the DOM?
+  use document.querySelector or document.querySelectorAll
+  also item.querySelector where "item" is an object inside document you've already grabbed from the DOM.
+
+  (yes rather than document get elemet by id or whatever)
+
+### dataset (data-*)
+add data-* attributes to objects, for example:
+  <img data-name="kait" src="/path/to/image.png" />
+then you can access those "data" attributes via "dataset" object (see the-dom.js for examples)
+⭐⭐ YES like data-* attributes on inline embedded stuff in Drupal rich text fields!
+
+### node
+A "node" is an element or a bit of text.
+
+### append / appendChild
+append might be fine to use at this point, instead of appendChild
+    (append wasn't supported by IE, but IE is super dead now)
+    (he didn't cover append in this course, b/c IE was still kicking around at that point)
 
 ## misc eslint
 
@@ -133,4 +178,3 @@ you can pass multiple things to console.log, it'll just dump everything out:
     return inches * 2.54;
   }
   ^^ everything after "return cm" is "unreachable"
-
