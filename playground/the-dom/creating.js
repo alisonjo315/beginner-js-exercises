@@ -40,3 +40,5 @@ heading.textContent = 'Cool Things';
 // p.s. insertAdjacentElement() first argument, there are four "position" options:
 // https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentElement#parameters
 myDiv.insertAdjacentElement('beforebegin', heading);
+
+// p.p.s. there's also insertAdjacentHTML for when the target isn't an "element"

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>If Statements</title>
+  <link rel="stylesheet" href="../base.css">
+</head>
+
+<body>
+
+  <h2>Truthy Values</h2>
+  * 1
+  * -10
+  * full string
+  * a string of "0"
+  * empty array
+  * empty object
+
+  <h2>Falsy Values</h2>
+  * 0
+  * undefined variable
+  * Variable set to null
+  * a variable set to `"hello" - 10` NaN
+  * empty string
+
+  <script>
+    const dog = '';
+
+    if (dog) {
+      console.log('you have a dog');
+    } else {
+      console.log('you dont have a dog');
+    }
+
+    let score = {};
+
+    if (score) {
+      console.log('There is a score already');
+    } else {
+      console.log('No score yet');
+    }
+
+    const values = [
+      [], {}, -10, 1, 0, '', 'full string', ' ', undefined, NaN, null, '0️⃣', '💩'
+    ];
+
+    console.group('truthy or falsy values');
+    values.forEach(value => {
+      if (value) {
+        console.log(value, 'is truthy');
+      } else {
+        console.log(value, 'is falsy');
+      }
+    });
+    console.groupEnd();
+
+    console.clear();
+
+    const isCool = true;
+
+    if (!isCool) {
+      console.log('You are not cool');
+    }
+
+    // AND AND TRICK!
+    function check1() {
+      console.log('Running check 1');
+      return true;
+    }
+    function check2() {
+      console.log('Running check 2');
+      return false;
+    }
+    function check3() {
+      console.log('Running check 3');
+      return true;
+    }
+
+    if (check1() && check2() && check3()) {
+      console.log('all checks passed');
+    } else {
+      console.log('Some checks failed');
+    }
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>
+
+  </title>
+  <link rel="stylesheet" href="../misc-class-files/base.css">
+</head>
+
+<body>
+  <script>
+    /* eslint-disable */
+
+    // Mutation methods - methods that change the variables they act on
+    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    // const numbersBackwards = numbers.reverse();
+    // console.log(numbersBackwards);
+    // console.log(numbers); // the original "numbers" array was changed
+
+    // If you want to use a mutation method and NOT mutate the original data, you need to first create a copy of the array (in other words, you simply can't do it on the original array).
+    // const numbersReversed = [...numbers].reverse();
+    // console.log(numbersReversed);
+    // console.log(numbers); // the original "numbers" array, unchanged
+
+    const names = ['wes', 'kait', 'snickers'];
+    // console.log(names);
+    names.push('lux');
+    // console.log(names);
+    const names2 = [...names, 'lux'];
+    console.log(names2);
+    names.unshift('poppy');
+    console.log(names);
+    const names3 = ['poppy', ...names];
+    console.log(names3);
+
+    // Immutable methods - methods that DON'T change the variables they act on
+    const pizzaSlice = numbers.slice(2, 5);
+    console.log(pizzaSlice);
+    console.log(numbers);
+
+
+
+  </script>
+</body>
+
+</html>

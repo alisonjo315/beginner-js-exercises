@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Maps</title>
+  <link rel="stylesheet" href="../misc-class-files/base.css">
+</head>
+
+<body>
+  <script>
+    /* eslint-disable */
+
+    const myMap = new Map();
+    myMap.set('name', 'wes');
+    myMap.set(100, 'This is a number'); // entry keys can be any type
+    console.log(myMap);
+    console.log(myMap.get('name'));
+
+    const score = 200;
+    const prizes = new Map();
+    prizes.set(100, 'Bear');
+    prizes.set(200, 'Duck');
+    prizes.set(300, 'Car');
+    console.log(`you win a ${prizes.get(score)}`);
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+<!-- FYI: mooooostly just copied/pasted this file from the original -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title></title>
+  <link rel="stylesheet" href="../misc-class-files/base.css">
+</head>
+
+<body>
+  <input type="text" name="first" value="wes">
+
+  <!-- <script src="https://unpkg.com/lodash"></script> something for doing packaging / cloning of objects, later on in this lesson; not something I'm interested in -->
+
+  <script>
+    /* eslint-disable */
+    const age = 100;
+    const wes = {
+      age,
+      name: 'wes',
+      properyToCheck: 'NEVER',
+      'cool-dude': true,
+      'really cool': false,
+      '777': true,
+      dog: 'snicker',
+      clothing: {
+        shirts: 10,
+        pants: 2
+      },
+      sayHello: function (greeting = 'Hey') {
+        return `${greeting} ${this.name}`;
+      }
+    };
+
+    wes.job = 'Web Developer';
+    wes.age = 50;
+
+    console.log(wes.age);
+    // const properyToCheck = prompt('What do you want to check?');
+    // console.log(properyToCheck);
+    // console.log(wes[properyToCheck]);
+
+    const nameInput = document.querySelector('[name="first"]');
+    const name = nameInput ? nameInput.value : '';
+    console.log(name);
+
+    // console.log(delete wes.job);
+    // wes.age = undefined;
+    // wes.age = null;
+
+    ///////
+    // What it's like when we compare (and set) identical non-iterable variables
+    ///////
+    let name1 = 'wes';
+    let name2 = 'wes';
+
+    console.log(name1 === name2);
+    name1 = 'scott';
+    console.log(name1 === name2);
+    // update name1 to be what is name2
+    name1 = name2;
+    console.log(name1 === name2);
+    name2 = name1;
+    name2 = 'westopher';
+    console.log(name1 === name2);
+
+    ///////
+    // What it's like when we compare (and set) identical OBJECT variables (and arrays, allegedly, as we'll learn later)
+    ///////
+    const person1 = {
+      first: 'wes',
+      last: 'bos',
+    };
+    const person2 = {
+      first: 'wes',
+      last: 'bos',
+    };
+    console.log(person1 === person2); // false
+
+    const person3 = person1;
+    person3.first = 'Larry';
+    console.log(person3.first); // Larry
+    console.log(person1.first); // Larry -- wait what?!
+    // We're not actually creating a copy of person1, we're creating a variable that's a reference to person1; person3 was never its own object, it's pointing at the original object. (Same thing with arrays, maps, sets.)
+    // When objects (and arrays) are "copied" by "reference", we're not actually creating a copy, we're creating a new variable that's a reference to the original.
+
+    // So how do I create a copy of an object?!
+    // "spread" operator (...)
+    const person4 = { ...person1 };
+
+    // another way to do it -- requires the "lodash" library, commented-out up top
+    // const person3 = _.cloneDeep(person1);
+    // person3.first = 'Larry';
+
+    //person3.clothing.shirts = 100;
+
+    const meatInventory = {
+      bacon: 2,
+      sausage: 3,
+      oyster: 10,
+    };
+
+    const veggieInventory = {
+      lettuce: 5,
+      tomatoes: 3,
+      oyster: 15,
+    };
+
+    // spread operator also lets you merge objects
+    const inventory = {
+      ...meatInventory,
+      ...veggieInventory,
+    };
+
+    console.log(inventory); // "oyster" will be "15" because veggieInventory is the last one to go into the "inventory" object
+
+    ///////
+    // I lost focus in this last part, not sure what it's about.
+    ///////
+    function doStuff(data) {
+      data = 'something else';
+      console.log(data);
+    }
+
+    function doStuff2(data) {
+      data.tomatoes = 10000000000;
+      console.log(data);
+    }
+
+    doStuff2(inventory);
+
+
+  </script>
+</body>
+
+</html>

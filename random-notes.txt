@@ -43,6 +43,21 @@ const cool = true;
         usually he uses const
         uses let sometimes
 
+    Properties on const variables (i.e. objects) can be changed, but "no one can ever overwrite the binding to" a const variable.
+          const wes = {
+            age = 10,
+            name: 'wes',
+            dog: 'snicker',
+          }
+          wes.age = 40;
+          # ^^ that's fine
+          wes = "Alison"; # nope
+          wes = {
+            name = "Alison",
+            age = 40,
+          }
+          # ^^ nope
+
 variable names must start with letters, underscores, dollar signs
     can contain ^^ these characters, and numbers
     *no hyphens*
@@ -57,6 +72,8 @@ anyway, mostly familiar to me BUT:
     String, Number, Object, Boolean
     Null
     Undefined, Symbol
+
+    THAT'S RIGHT, "array" isn't technically a data type! (see "arrays" below)
 
 pro tip: use typeof in dev tools to inspect variables on the fly
   i.e. open the CD Demo homepage > dev tools > Console, and do:
@@ -88,9 +105,12 @@ variables / variable names CAN be reused as parameters
     return `I meant to tell you ${something}`;
   }
 
-### misc
+### Arguments vs. Parameters
+Arguments are actual values.
+Parameters are placeholders.
 
-Anonymous functions -- P.S. some ppl say "don't use anonymous functions, they give you bad errors" that's because the errors used to be really awful, i.e. if you have an error inside an anonymous function, it would just say "you have an error in an anonymous function" that's it, no line number, etc. Fortunately, the errors aren't so bad anymore.
+### "side effects"
+A side effect is when you're inside of a function, and you reach outside of the function to do something else (i.e. attach an event listener, print something on the page, do a thing in console, etc).
 
 ### closures
 
@@ -98,7 +118,107 @@ Honestly, weird, but! --
 Closures are the ability for a child/inner function to access variables from a higher level scope even after these functions have been called/"closed".
   The example that clicked for me the best was the hockeyGame() thing in closures.html.
 
+### misc
+
+Anonymous functions -- P.S. some ppl say "don't use anonymous functions, they give you bad errors" that's because the errors used to be really awful, i.e. if you have an error inside an anonymous function, it would just say "you have an error in an anonymous function" that's it, no line number, etc. Fortunately, the errors aren't so bad anymore.
+
+## objects
+
+dot notation: Most of the time, we access object properties with dot notation.
+BUT, if the property names are strings or have messy characters in them, we have to use square bracket notation to access those property values.
+ALSO, if we're feeding in the property to check via a variable, we have to use square bracket notation.
+          const wes = {
+            age = 10,
+            name: 'wes',
+            dog: 'snicker',
+            'cool-dude': true,
+            'really cool': false,
+            '777': true,
+          }
+          cosole.log(wes.age);
+          cosole.log(wes['really cool']);
+
+          (For an example of "feeding in the property to check via a variable," see playground\objects.html, look for "properyToCheck".)
+
+Remove property from object - the "delete" key! No not on your keyboard!
+  delete wes.job;
+  ^^ returns true/false if the "delete" was successful, meaning, you can print it if you want to check to see if it worked, i.e.:
+  console.log(delete wes.job);
+
+### object methods
+
+What is a method?
+  "When you have a function that lives on a property in an object, we call it a method of that object."
+  Example: playground\objects.html, look for "sayHello"
+
+Static methods
+  A method that "lives on the mama" (??)...
+  Date.now()
+  .now() is a static method because it doesn't exist on every single date, it only exists on the mama object... (yeah idk)
+
+### object reference vs.values
+
+Objects with identical "values" (i.e. identical property names and values) won't evaluate as "true" when you do object1 === object2, because:
+  "When you are comparing objects, it is done by reference to the object itself, not the values inside of it."
+  Example: playground\objects.html, person1 === person2
+
+"Copying" an object (or array/map/set) via '=' operator doesn't actually copy that object, it creates a reference to the original object.
+  const person3 = person1;
+  person3.first = 'Larry';
+  If you update properties on the new reference variable, it's updating the original.
+    "person3" was never its own object, it's pointing at the original object, so we've just changed person1.first 😬
+    ^^ reminds me of a symlink
+
+## maps
+
+Map bits are "entries" (like "properties" in objects).
+
+Methods: No map methods (like object methods), that's not what they're for, they're for storing data.
+
+## arrays
+
+Array bits are "items."
+
+Array isn't its own TYPE, it's just an object:
+  const names = ['wes', 'kait', 'snickers'];
+  console.log(typeof names); // "object"
+  Array.isArray(names); // true
+
+Array-ify a string like this:
+  [...mystring]
+  i.e.
+  const myname = 'alison';
+  const mynameArray = [...myname]
+  p.s. he didn't literally say this (that I recall), I'm just trying things out based on what I see him do.
+
+### Mutation vs. immutable methods
+
+(p.s. almost certainly this concept applies to more than just arrays)
+
+Mutation method = changes the original data
+  Example: myarray.reverse();
+Immutable method = does not change the original data
+  Example: myarray.slice(2,4);
+
+### slice vs. splice
+
+Unfairly named methods.
+- slice is immutable
+- splice is mutable
+
+console.log(3, 2);
+  ^^ removes two values starting at index 3
+
+### for, for of, for in loops
+"for" is just like what I already know
+"for of" and "for in" are... different. Sounds like they're not going to come up very often, so I'm not worrying about them - just mentioning that they exist, in case I come across one.
+  P.S. I read a little about the differences between for...of/for...in on moz/mdn -- it was confusing and I feel reasonably sure I don't need to understand.
+
 ## debugging
+
+Check out logTopping() with the `debugging;` line in:
+playground\arrays (more)\array-loopings-methods.html
+>> Adds cool stuff to dev tools (see notes around that ^^ line).
 
 console.table(listOfObjects);
 ^^ use this console method for getting a list of objects!
@@ -140,13 +260,66 @@ add data-* attributes to objects, for example:
 then you can access those "data" attributes via "dataset" object (see the-dom.js for examples)
 ⭐⭐ YES like data-* attributes on inline embedded stuff in Drupal rich text fields!
 
-### node
-A "node" is an element or a bit of text.
+### node vs. element
+(part of "traversing" lesson)
+- A "node" is an element or a bit of text.
+- An "element" is wrapped in a tag.
+
+For example:
+  <p class="wes">I am Wes, I <em>love</em> to bbq!</p>
+Inside `.wes`, `<em>` is an element, and it is a node -- and, all the bits on either side of that element are nodes (i.e. "text nodes").
+  const wes = document.querySelector('.wes');
+  console.log(wes.children); // outputs `em`
+  console.log(wes.childNodes); // outputs `text` (I am Wes, I ), `em`, `text` ( to bbq!)
+
+P.S. Other selectors that only select "elements" are clearer IMO, i.e.
+  console.log(wes.lastElementChild);
+  console.log(wes.nextElementSibling);
+
+P.P.S. But apparently the selectors that don't have the word "element" in them are all to select nodes, i.e.
+  console.log(wes.lastChild);
+  console.log(wes.nextSibling);
+
+(So, the "get all of them" selector for elements is just "children", and the "get all of them selector" for nodes is "childNodes", but then, the "get specific ones" selectors are generic sounding for NODES, while the ones for ELEMENTS have the word "element" in them... COOL!!!!!)
+
 
 ### append / appendChild
 append might be fine to use at this point, instead of appendChild
     (append wasn't supported by IE, but IE is super dead now)
     (he didn't cover append in this course, b/c IE was still kicking around at that point)
+
+
+## events, event listeners
+
+"capture" and "bubbling" and "target" phases:
+https://www.w3.org/TR/2003/NOTE-DOM-Level-3-Events-20031107/events.html#Events-phases
+
+## if statements
+
+### truthy, falsy
+See if-statements.html
+Basically, variable "values"/non-values that will evaluate as true or false, even though they're not reeeeeeeally true or false.........
+
+Truthy values
+* 1
+* -10
+* full string
+* a string of "0"
+
+Falsy values
+* 0
+* undefined variable
+* Variable set to null
+* a variable set to `"hello" - 10` NaN
+* empty string
+
+### && trick
+See if-statements.html > "AND AND TRICK"
+If you do several && tests in one if statement, it will stop running the checks as soon as it hits a fail -- in the example in the aforementioned file, if you open that HTML file, you'll see it stops after check2.
+
+## switch statements
+Cool use of a switch to do animated interactions ("event.key" for arrow keys, then a switch for each "ArrowLeft" "ArrowRight" etc. cases, rotating and flipping a little turtle).
+See switch-statements.html (just a copy of the "FINISHED" file).
 
 ## misc eslint
 
@@ -159,6 +332,9 @@ See examples in...
 - variables.html "eslint-disable prefer-const" example for "entire file" (so to speak)
 
 ## misc
+
+console.clear();
+^^ reset the console (?!)
 
 strict mode: brief explanation is simply that it forces some best practices
     not worrying about it, b/c it's forced by modules and that's the modern way to do JS so, effectively, we'll be forced into strict mode anyway.
@@ -178,3 +354,23 @@ you can pass multiple things to console.log, it'll just dump everything out:
     return inches * 2.54;
   }
   ^^ everything after "return cm" is "unreachable"
+
+parseFloat() preserves decimals, parseInt() does not.
+
+event.stopPropagation() prevents events bubbling up or capturing down (i.e. you clicked this strong tag on this button in a div in a body in an html in a window -- omg stop)
+
+"immutable" = can't be mutated (not can't be silenced)
+
+backticks: use these to print a string with variable-y things inside:
+  console.log(`hello ${name} world`);
+
+### Dates
+To see all the methods that exist for dates:
+  const myDate = new Date("January 1, 2023");
+  console.dir(myDate);
+To create a date object for "now":
+  const rightNow = new Date();
+
+  Or:
+  Date.now();
+
