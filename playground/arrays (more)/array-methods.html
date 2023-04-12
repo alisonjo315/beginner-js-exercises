@@ -12,6 +12,7 @@
 
 <body>
   <script>
+    /* eslint-disable */
     const toppings = ['Mushrooms ', 'Tomatoes', 'Eggs', 'Chili', 'Lettuce', 'Avocado', 'Chiles', 'Bacon', 'Pickles', 'Onions', 'Cheese'];
 
     const buns = ['egg', 'wonder', 'brioche'];
@@ -69,43 +70,121 @@
     console.log(Object.keys(meats));
     console.log(Object.values(meats));
 
+    // qty/key/entry are local variables representing each item we loop through
+    console.log("values");
+    Object.values(meats).forEach(qty => {
+      console.log(qty);
+    });
+    console.log("then keys...");
+    Object.keys(meats).forEach(key => {
+      console.log(key);
+    });
+    console.log("then entries...");
+    Object.entries(meats).forEach(entry => {
+      console.log(entry[0], entry[1]);
+      // const [key, value] = entry;
+      // console.log(key, value);
+    });
+    console.log("then entries, part 2");
+    Object.entries(meats).forEach(([meat, qty]) => {
+      console.log(meat, qty);
+    });
 
     /*
       Instance Methods
     */
 
     // Display all bun types with " or " - use join()
+    console.log(buns.join(' or '));
 
     // We have a string "hot dogs,hamburgers,sausages,corn" - use split() to turn it into a string
+    const foodString = "hot dogs,hamburgers,sausages,corn";
+    console.log(foodString.split(','));
 
     // take the last item off toppings with pop()
+    /****
+     * Alison: Skipping this because I know it from Python!
+    Just remember, pop does remove the thing it pops from the original array (i.e. it is mutable) -- and returns the thing it removed. */
+
     // add it back with push()
+    /****
+     * Alison: adds the item to the end of the array. */
+
     // take the first item off toppings with shift()
+    /****
+     * Alison: Same idea as "pop" but the first item of the array. */
+
     // add it back in with unshift()
+    /****
+     * Alison: Same idea as "push" but adds the item to the start of the array. */
+
     // Do the last four,but immutable (with spreads and new variables)
+    /****
+     * Alison: Also "slice" (maybe he means slice as part of spreads, idk).
+     * Reminder: "mutable" is like "mutation-able," not "mute-able." */
 
 
     // Make a copy of the toppings array with slice()
+    // slice: when the second argument (end index) is omitted, it goes from "start" to the end of the array (inclusive).
+    const toppingsCopy = toppings.slice(0);
+    toppings[0] = 'Garbage';
+    console.log(toppings);
+    console.log(toppingsCopy);
+
     // Make a copy of the toppings array with a spread
+    const toppingsCopy2 = [...toppings];
+
     // take out items 3 to 5 of your new toppings array with splice()
+    /****
+     * Alison: btw splice returns the removed items, if applicable.
+     * Optionally, add more arguments than just (start, deleteCount). The additional arguments are items to *ADD* to the array, beginning from the "start" index (first argument). */
+
     // find the index of Avocado with indexOf() / lastIndexOf()
+
     // Check if hot sauce is in the toppings with includes()
     // add it if it's not
+    const isInToppings = toppings.includes('Hot Sauce');
+    console.log(isInToppings);
+    // add it if it's not
+    if (!isInToppings) {
+      toppings.push('Hot Sauce');
+    }
+    console.log(toppings);
+
     // flip those toppings around with reverse()
 
     /*
       Callback Methods
     */
+    /****
+     * Alison: ^^ A term he uses to talk about methods/functions that *take* callback functions as arguments, i.e. that use callback functions to run tests on objects/arrays. */
 
     // find the first rating that talks about a burger with find()
+    /****
+     * From Mozilla: The find() method returns the first element in the provided array that satisfies the provided testing function.
+     * Longer explanation (from Mozilla): The find() method is an iterative method. It calls a provided callbackFn function once for each element in an array in ascending-index order, until callbackFn returns a truthy value. find() then returns that element and stops iterating through the array. */
+    function findBurgRating(singleFeedback) {
+      return singleFeedback.comment.includes('burg');
+    }
+    console.log(feedback.find(findBurgRating));
+    // p.s. why no parens with the use of findBurgRating? -- he said something like, we're not calling it, it's a reference to it... idk what that means! -- that part of the video got pretty intense, a function that returned another function... Something for Future Alison to maybe think about more.
+
     // find all ratings that are above 2 with filter()
+    console.log(feedback.filter(singleFeedback => { return singleFeedback.rating > 2;}));
+
     // find all ratings that talk about a burger with filter()
     // Remove the one star rating however you like!
 
     // check if there is at least 5 of one type of meat with some()
+    /****
+     * Alison: Reminder: meats is an object, so we can't run .some() on it -- but we can run it on an array-ified version of meats, via Object.values(meats) and so on (see "static methods" above). */
+
     // make sure we have at least 3 of every meat with every()
     // sort the toppings alphabetically with sort()
     // sort the order totals from most expensive to least with .sort()
+    /****
+     * Alison: He does a bananas-wild demo of how to use .sort() to sort numbers, I'm letting it fall right out of my head because that can't possibly be the simplest way to sort numbers?? And if it is, I'll just look it up every time.  No way am I holding onto THAT, life is too short. */
+
     // Sort the prices with sort()
 
     /*

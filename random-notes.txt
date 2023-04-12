@@ -191,14 +191,18 @@ Array-ify a string like this:
   const mynameArray = [...myname]
   p.s. he didn't literally say this (that I recall), I'm just trying things out based on what I see him do.
 
-### Mutation vs. immutable methods
+Array-ify an object like this:
+  const meatArray1 = Object.values(meats);
+  const meatArray2 = Object.keys(meats);
+  const meatArray3 = Object.entries(meats);
+  ^^ see array-methods.html for what each method returns, and example usage.
 
-(p.s. almost certainly this concept applies to more than just arrays)
+Object-ify back like this:
+  const meatObjectFromArray = Object.fromEntries(meatArray3);
+  ^^ where meatArray3 is a "nested array"
 
-Mutation method = changes the original data
-  Example: myarray.reverse();
-Immutable method = does not change the original data
-  Example: myarray.slice(2,4);
+myarray.push() is the opposite of "pop" (adds an item to the end of an array).
+  .shift()/.unshift() are like pop/push, but they remove/add items at the start of the array.
 
 ### slice vs. splice
 
@@ -206,8 +210,9 @@ Unfairly named methods.
 - slice is immutable
 - splice is mutable
 
-console.log(3, 2);
+myArray.splice(3, 2);
   ^^ removes two values starting at index 3
+  ^^ returns an array of the removed items (if any are removed)
 
 ### for, for of, for in loops
 "for" is just like what I already know
@@ -252,7 +257,7 @@ need to get stuff from the DOM?
   use document.querySelector or document.querySelectorAll
   also item.querySelector where "item" is an object inside document you've already grabbed from the DOM.
 
-  (yes rather than document get elemet by id or whatever)
+  (yes rather than document get element by id or whatever)
 
 ### dataset (data-*)
 add data-* attributes to objects, for example:
@@ -374,3 +379,13 @@ To create a date object for "now":
   Or:
   Date.now();
 
+### Mutaable vs. immutable methods
+
+TL;DR: "Mutable" is like "mutation-able" not "mute-able."
+
+(p.s. this topic was covered during arrays, but, almost certainly this concept applies to more than just arrays??)
+
+Mutation (mutable) method = changes the original data
+  Example: myarray.reverse();
+Immutable method = does not change the original data
+  Example: myarray.slice(2,4);
